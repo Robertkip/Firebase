@@ -8,7 +8,15 @@ const credentials = require('./key.json');
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+// Allows requests from any origin
+    origin: "*",
+// Specify allowed HTTP methods
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+  })
+);
+
 admin.initializeApp({
   credential: admin.credential.cert(credentials),
 });
